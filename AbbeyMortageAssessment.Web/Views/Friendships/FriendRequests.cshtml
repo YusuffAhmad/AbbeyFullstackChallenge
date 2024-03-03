@@ -1,0 +1,76 @@
+﻿@model AbbeyMortageAssessment.Services.Friendship.FriendshipServiceModel
+@{
+    ViewData["Title"] = "FriendRequests";
+}
+<div class="container">
+    <h1 class="text-center">Friend Requests</h1>
+</div>
+
+<div class="container">
+    <div class="float-md-left">
+        <h3>Requests</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Username
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.Requests)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => user.UserName)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Accept", "Accept", "Friendships",
+                         new { requesterId = user.Id },
+                         new { @class = "btn btn-outline-success"})
+                        </td>
+                        <td>
+                            @Html.ActionLink("Reject", "Reject", "Friendships",
+                         new { requesterId = user.Id },
+                         new { @class = "btn btn-outline-danger"})
+                        </td>
+                        <td>
+                            @Html.ActionLink("View Profile", "FriendshipStatus",
+                        new { userId = user.Id, invokedFrom = "Requests" },
+                        new { @class = "btn btn-outline-primary"})
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="float-md-right">
+        <h3>Pending</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Username
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.PendingRequests)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => user.UserName)
+                        </td>
+                        <td>
+                            @Html.ActionLink("View Profile", "FriendshipStatus",
+                       new { userId = user.Id, invokedFrom = "Pendings"},
+                       new { @class = "btn btn-outline-primary"})
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

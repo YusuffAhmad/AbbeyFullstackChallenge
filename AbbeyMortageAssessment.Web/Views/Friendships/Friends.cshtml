@@ -1,0 +1,44 @@
+﻿@model IEnumerable<AbbeyMortageAssessment.Services.User.UserServiceModel>
+
+@{
+    ViewData["Title"] = "Friends";
+}
+
+<h1>Friends</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Username
+            </th>
+            <th>
+                Full name
+            </th>
+            <th>
+                Nationality
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => user.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => user.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => user.Country)
+                </td>
+                <td>
+                    @Html.ActionLink("View Profile", "FriendshipStatus","Friendships",
+                        new { userId = user.Id },
+                        new { @class = "btn btn-outline-info"})
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
