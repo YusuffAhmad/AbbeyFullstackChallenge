@@ -34,5 +34,4 @@ To run this application, you will need:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/abbey-fullstack-challenge.git
-   cd abbey-fullstack-challenge
+   git clone https://github.com/YusuffAhmad/AbbeyFullstackChallenge.git
